@@ -1,5 +1,6 @@
 import axios, { Axios } from 'axios'
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 function Recomended({movies, fetchmovies}) {
 
@@ -21,8 +22,10 @@ useEffect(()=>{
                     return (
                         <div className='mov-wrap'>
                             <div className='hover-mov'>
+                            <Link className='id-link' to={`/movie/${m.imdbID}`}  >
                             <img className='poster' src={m.Poster} alt="" />
                             <h4 className='title'>{m.Title}</h4>
+                            </Link>
                             </div>
                         </div>
                     )

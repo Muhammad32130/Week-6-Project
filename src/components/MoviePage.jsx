@@ -22,8 +22,8 @@ function MoviePage() {
     console.log(currentmovie)
   return (
     <div>
-        <img src={currentmovie.Poster} alt="" />
-        <h3>{currentmovie.Title}</h3>
+        <img src={currentmovie?.Poster} alt="" />
+        <h3>{currentmovie?.Title}</h3>
     </div>
   )
 }

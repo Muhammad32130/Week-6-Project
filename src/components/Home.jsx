@@ -1,16 +1,17 @@
 import React from 'react'
 import Nav from "./Nav.jsx"
 import Footer from './Footer.jsx'
-import search from '../images/search-icon.svg'
-import { Link, useNavigate } from 'react-router-dom'
-function Home({setsearch}) {
+import searchbtn from '../images/search-icon.svg'
+import { Link, useNavigate, useParams } from 'react-router-dom'
+function Home({}) {
   const navigate = useNavigate();
     function setSearchPreventDefault(event){
       event.preventDefault();
-      setsearch(event?.target[0].value)
-      navigate(`/search`)
+    
+    localStorage.setItem('search', event.target[0].value)
+      navigate(`/search`);
+      
     }
-
 
   return (
     <div>
@@ -23,17 +24,16 @@ function Home({setsearch}) {
             <h3>Search for your movie or shows!</h3>
             <div className='inp-contain'>
               <form  onSubmit={(event)=>{setSearchPreventDefault(event)}}>
-
-            <input className='inp_home' placeholder='Search' />
+            <input required className='inp_home' placeholder='Search' />
          
             <button className='sub-btn' type='submit'>
-            <img className='logo-search' src={search} alt="" />
+            <img className='logo-search' src={searchbtn} alt="" />
             </button>
               </form>
             </div>
 
         
-            <Link className='btn-rcmnd' onClick={setsearch(null)} to={'/recommended'}>
+            <Link className='btn-rcmnd'  to={'/recommended'}>
             View Recommended !
             </Link>
          

@@ -10,7 +10,7 @@ function Nav() {
                     <div className="one">
                        <img src={logo} alt="" />
                         <div className="lists">
-                            <li className="one__home"><a href="#">Home</a></li>
+                            <li className="one__home"><a href="/">Home</a></li>
                             <li className="one__about"><a href="#">About</a></li>
                             <li className="one__contactUs"><a href="#">Contact Us</a></li>
                         </div>

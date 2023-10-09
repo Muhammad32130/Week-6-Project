@@ -2,6 +2,11 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import star from '../images/star-icon.png';
+import Skeleton from './Skeleton';
+import noimg from '../images/No_img.png'
+
+
+
 function MoviePage() {
     const [currentmovie, setcurrentmovie] = useState(null)
     const { id } = useParams()
@@ -31,8 +36,8 @@ function MoviePage() {
       useEffect(() => {
           fetchMovies()
         }, [])
-    console.log(currentmovie)
         
+        console.log(currentmovie)
     return (
         <div className='cm-main'>
         {currentmovie ? 
@@ -41,10 +46,15 @@ function MoviePage() {
                 <div className="cm">
             <h3 className='cm-title'>{currentmovie?.Title}</h3>
                     <h4 className='mov-info'>{currentmovie?.Year + ' | ' + currentmovie?.Rated + ' | ' + currentmovie?.Runtime}</h4>
-                    <img className='cm-poster' src={currentmovie?.Poster} alt="" />
+                   {currentmovie.Poster !== "N/A"  ? 
+                   <img className='cm-poster' src={currentmovie?.Poster} alt="" />
+                   
+                :
+                <img className='cm-poster test' src={noimg} alt="" />
+                }
                 </div>
                 <div className='mov-btns'>
-                    <button className='btn-strm'><svg className='btn-svg' fill="#000000" height="100x" width="100x" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                    <button onClick={()=>{alert("This feature has not been implemented.")}} className='btn-strm'><svg className='btn-svg' fill="#000000" height="100x" width="100x" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 459 459" >
 
                         <path d="M229.5,0C102.751,0,0,102.751,0,229.5S102.751,459,229.5,459S459,356.249,459,229.5S356.249,0,229.5,0z M310.292,239.651
@@ -58,7 +68,7 @@ function MoviePage() {
                             Watch on Zomo
                         </h6>
                     </button>
-                    <button className='btn-watch'><svg className='btn-svg' xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 24 24">
+                    <button onClick={()=>{alert("This feature has not been implemented.")}} className='btn-watch'><svg className='btn-svg' xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 24 24">
                         <path fill-rule="evenodd" d="M 11 2 L 11 11 L 2 11 L 2 13 L 11 13 L 11 22 L 13 22 L 13 13 L 22 13 L 22 11 L 13 11 L 13 2 Z"></path>
                     </svg><h6 className='btn-text'>
                             Add to Watchlist
@@ -98,7 +108,35 @@ function MoviePage() {
 
             </div> 
 </>
-            : "null"}
+            : 
+            <>
+            <div className='cm-wrap'>
+                <div className="cm">
+            <Skeleton width={353} height={56}></Skeleton>
+            <Skeleton width={353} height={21} margin={0.5}></Skeleton>
+            <Skeleton width={350} margin={0.5} height={525}></Skeleton>
+                </div>
+                <div className='mov-btns'>
+                <Skeleton width={224} height={64}></Skeleton>
+                <Skeleton width={224} margin={2} height={64}></Skeleton>
+                </div>
+                <div className='mov-plot'>
+
+                <Skeleton width={438} height={72}></Skeleton>
+                <hr />
+                <div className='mov-ppl'>
+                <Skeleton width={158} height={21}></Skeleton>
+                    <hr />
+                    <Skeleton width={158} height={21}></Skeleton>
+                    <hr />
+                    <Skeleton width={158} height={21}></Skeleton>
+                </div>
+                </div>
+            </div>
+            <Skeleton width={101} height={78}></Skeleton>
+            </>
+            
+            }
         </div>
     )
 }

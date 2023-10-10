@@ -4,27 +4,32 @@ nav {
     height: 100px;
     margin: 0 auto;
 }
+
 .one {
-   
+
     display: flex;
     justify-content: space-around;
     align-items: center;
     height: 100px;
 }
+
 img {
     width: 8vw;
 }
+
 .lists {
     display: flex;
-text-decoration: none;
-list-style: none;
-justify-content: space-between;
-width: 25%;
+    text-decoration: none;
+    list-style: none;
+    justify-content: space-between;
+    width: 25%;
 }
-a{
+
+a {
     color: white;
     text-decoration: none;
 }
+
 .contain {
     background: #141414;
 }

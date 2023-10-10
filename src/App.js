@@ -14,37 +14,37 @@ function App() {
 
   async function fetchMovies() {
 
- 
-     
-    await axios.get(`https://www.omdbapi.com/?apikey=180f5a56&s=${localStorage.getItem('search') ? localStorage.getItem('search') : 'American' }`)
-    .then(res => {
-      
-      setmovies(res.data?.Search?.slice(0, 6))
-      setTimeout(() => {
-        
-        setloading(true)
-      }, 500);
-    })
-    .catch(err=>{
-      console.log(err.Error)
-    })
+
+
+    await axios.get(`https://www.omdbapi.com/?apikey=180f5a56&s=${localStorage.getItem('search') ? localStorage.getItem('search') : 'American'}`)
+      .then(res => {
+
+        setmovies(res.data?.Search?.slice(0, 6))
+        setTimeout(() => {
+
+          setloading(true)
+        }, 500);
+      })
+      .catch(err => {
+        console.log(err.Error)
+      })
   }
 
   return (
     <div className="App">
-      <Nav/>
+      <Nav />
       <BrowserRouter>
-<Routes>
-<Route path='/' element={<Home  ></Home>}></Route>
-<Route path='/recommended' element={<Recomended loading={loading} movies={movies} fetchmovies={fetchMovies}></Recomended>}></Route>
-<Route path='/search' element={<Search loading={loading} movies={movies} fetchmovies={fetchMovies} ></Search>}></Route>
-<Route path='/movie/:id' element={<MoviePage></MoviePage>} ></Route>
-</Routes>
-  
-      
+        <Routes>
+          <Route path='/' element={<Home  ></Home>}></Route>
+          <Route path='/recommended' element={<Recomended loading={loading} movies={movies} fetchmovies={fetchMovies}></Recomended>}></Route>
+          <Route path='/search' element={<Search loading={loading} movies={movies} fetchmovies={fetchMovies} ></Search>}></Route>
+          <Route path='/movie/:id' element={<MoviePage></MoviePage>} ></Route>
+        </Routes>
+
+
 
       </BrowserRouter>
-      <Footer/>
+      <Footer />
     </div>
   );
 }

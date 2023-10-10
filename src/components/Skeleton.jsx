@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Skeleton({height, width, margin}) {
+function Skeleton({ height, width, margin }) {
     const skeletonStyle = {
         height: `${height}px`,
         width: `${width}px`,
@@ -8,10 +8,10 @@ function Skeleton({height, width, margin}) {
         borderRadius: '4px',
         animation: 'skeleton-loading 1.5s infinite',
         marginTop: `${margin}rem`,
-      };
-  return (
-    <div style={skeletonStyle}></div>
-  )
+    };
+    return (
+        <div style={skeletonStyle}></div>
+    )
 }
 
 export default Skeleton
